@@ -99,7 +99,7 @@ public class OrderController {
         orderBiz.pay(orderId);
         return "redirect:/user/center";
     }
-
+	// 通道
     @RequestMapping(value = "/cancel", method = RequestMethod.POST)
     public String cancel(@RequestParam("type")String type, @RequestParam("id")Integer orderId){
         orderBiz.remove(orderId);
@@ -110,7 +110,7 @@ public class OrderController {
             return "redirect:/user/center";
         }
     }
-
+	//确认收到
     @RequestMapping(value = "/confirm_receipt", method = RequestMethod.POST)
     public String confirmReceipt(@RequestParam("orderId")Integer orderId){
         orderBiz.confirmReceipt(orderId);
@@ -122,7 +122,7 @@ public class OrderController {
         orderBiz.completed(orderId);
         return "redirect:/user/center";
     }
-
+	//评论顺序
     @RequestMapping(value = "/comment_commodity", method = RequestMethod.POST)
     public String commentCommodity(@RequestParam("orderId")Integer orderId, Evaluation evaluation){
         evaluationBiz.add(evaluation);
