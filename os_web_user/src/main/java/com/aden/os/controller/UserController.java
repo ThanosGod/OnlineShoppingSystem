@@ -32,17 +32,17 @@ public class UserController {
     public String toRegistered(){
         return "user_registered";
     }
-
+	// 登录
     @RequestMapping(value = "/to_login", method = RequestMethod.GET)
     public String toLogin(){
         return "user_login";
     }
-
+	// 编辑
     @RequestMapping(value = "/to_edit", method = RequestMethod.GET)
     public String toEdit(){
         return "user_edit";
     }
-
+	// 内容
     @RequestMapping(value = "/center", method = RequestMethod.GET)
     public String center(HttpSession session, Map<String, Object> model){
         User user = (User) session.getAttribute("user");
@@ -50,21 +50,21 @@ public class UserController {
         model.put("LIST", orderBiz.getByUserId(userId));
         return "user_center";
     }
-
+	// 注册
     @RequestMapping(value = "/registered", method = RequestMethod.POST)
     public String registered(User user, HttpSession session){
         userBiz.add(user);
         session.setAttribute("user", user);
         return "redirect:/commodity/homepage";
     }
-
+	// 登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam("phone") String phone, @RequestParam("password") String password, HttpSession session){
         User user = userBiz.verifyInfo(phone, password);
         session.setAttribute("user", user);
         return "redirect:/commodity/homepage";
     }
-
+	// 退出
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String signOut(HttpSession session, SessionStatus sessionStatus){
         session.removeAttribute("user");

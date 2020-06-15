@@ -22,7 +22,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/commodity")
 public class CommodityController {
-
+	
     @Autowired
     private CommodityBiz commodityBiz;
     @Autowired
@@ -31,20 +31,21 @@ public class CommodityController {
     private UserBiz userBiz;
     @Autowired
     private EvaluationBiz evaluationBiz;
-
+	// 获取用户列表
     @RequestMapping(value = "/homepage", method = RequestMethod.GET)
     public String listAll(Map<String, Object> model){
         model.put("LIST", commodityBiz.getEveryTypeTopThree());
         model.put("HOT_LIST", commodityBiz.getSalesVolumeTopTen());
         return "commodity_homepage";
     }
-
+	// 查询列变种类
     @RequestMapping(value = "/list_type/{id}", method = RequestMethod.GET)
     public String listType(@PathVariable("id")Integer id, Map<String, Object> model){
         model.put("LIST", commodityBiz.getByType(id));
         return "commodity_list";
     }
 
+	// 组织详情信息
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     public String detail(@PathVariable("id")Integer id, Map<String, Object> model){
 

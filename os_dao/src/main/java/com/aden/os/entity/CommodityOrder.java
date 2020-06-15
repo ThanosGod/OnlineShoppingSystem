@@ -22,6 +22,10 @@ public class CommodityOrder {
     // 更新时间
     private Date updateTime;
     // 订单明细列表
+	
+	
+	
+	
     private List<CommodityOrderDetail> detailList;
 
     public Integer getId() {
